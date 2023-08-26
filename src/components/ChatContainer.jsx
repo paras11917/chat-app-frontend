@@ -24,7 +24,6 @@ export default function ChatContainer({ currentChat, socket }) {
 
   useEffect(() => {
     fun();
-    //eslint-disable-next-line
   }, [currentChat]);
 
   useEffect(() => {
