@@ -11,15 +11,20 @@ export default function ChatContainer({ currentChat, socket }) {
   const scrollRef = useRef();
   const [arrivalMessage, setArrivalMessage] = useState(null);
 
-  useEffect(async () => {
+  const fun =async ()=>{
     const data = await JSON.parse(
-      localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
+      localStorage.getItem("chat-app-current-user")
     );
     const response = await axios.post(recieveMessageRoute, {
       from: data._id,
       to: currentChat._id,
     });
     setMessages(response.data);
+  }
+
+  useEffect(() => {
+    fun();
+    //eslint-disable-next-line
   }, [currentChat]);
 
   useEffect(() => {
